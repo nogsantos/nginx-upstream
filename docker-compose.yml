@@ -1,4 +1,4 @@
-version: "3.2"
+version: "3.7"
 services:
   proxy:
    container_name: proxy
@@ -23,42 +23,40 @@ services:
       target: /var/www/public
    networks:
       - nogsantos
-  api1:
+   depends_on:
+    - "node_1"
+    - "node_2"
+    - "node_3"
+  node_1:
    container_name: api1
    build:
     context: ./containers
     dockerfile: node.dockerfile
    restart: always
-   ports:
-    - "3000"
    networks:
     - nogsantos
    volumes:
     - type: bind
       source: ./src/api
       target: /var/www
-  api2:
+  node_2:
    container_name: api2
    build:
     context: ./containers
     dockerfile: node.dockerfile
    restart: always
-   ports:
-    - "3000"
    networks:
     - nogsantos
    volumes:
     - type: bind
       source: ./src/api
       target: /var/www
-  api3:
+  node_3:
    container_name: api3
    build:
     context: ./containers
     dockerfile: node.dockerfile
    restart: always
-   ports:
-    - "3000"
    networks:
     - nogsantos
    volumes:
@@ -68,4 +66,5 @@ services:
 volumes:
   volume:
 networks:
-  nogsantos: {}
+  nogsantos:
+   driver: bridge
