@@ -1,0 +1,29 @@
+*,
+html {
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+}
+
+html, body {
+	background: #cecece;
+	height: 100%;
+}
+
+.container {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.row {
+	width: auto;
+}
+
+#timer {
+	font-size: 2.5rem;
+	font-weight: bold;
+	color: #fafafa;
+	text-shadow: 2px 2px 3px #666;
+}

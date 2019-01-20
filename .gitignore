@@ -1,0 +1,19 @@
+src/api/node_modules
+
+# Arquivo de environment produção
+*.env
+
+# Nginx
+nginx/log/*.log
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json

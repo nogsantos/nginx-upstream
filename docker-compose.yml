@@ -1,0 +1,71 @@
+version: "3.2"
+services:
+  proxy:
+   container_name: proxy
+   build:
+    context: ./containers
+    dockerfile: nginx.dockerfile
+   restart: always
+   ports:
+    - "80:80"
+   volumes:
+    - type: bind
+      source: ./nginx/services
+      target: /etc/nginx/conf.d
+    - type: bind
+      source: ./nginx/nginx.conf
+      target: /etc/nginx/nginx.conf
+    - type: bind
+      source: ./nginx/logs
+      target: /var/log/nginx
+    - type: bind
+      source: ./src/public
+      target: /var/www/public
+   networks:
+      - nogsantos
+  api1:
+   container_name: api1
+   build:
+    context: ./containers
+    dockerfile: node.dockerfile
+   restart: always
+   ports:
+    - "3000"
+   networks:
+    - nogsantos
+   volumes:
+    - type: bind
+      source: ./src/api
+      target: /var/www
+  api2:
+   container_name: api2
+   build:
+    context: ./containers
+    dockerfile: node.dockerfile
+   restart: always
+   ports:
+    - "3000"
+   networks:
+    - nogsantos
+   volumes:
+    - type: bind
+      source: ./src/api
+      target: /var/www
+  api3:
+   container_name: api3
+   build:
+    context: ./containers
+    dockerfile: node.dockerfile
+   restart: always
+   ports:
+    - "3000"
+   networks:
+    - nogsantos
+   volumes:
+    - type: bind
+      source: ./src/api
+      target: /var/www
+volumes:
+  volume:
+networks:
+  nogsantos: {}
