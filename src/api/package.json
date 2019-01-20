@@ -4,7 +4,8 @@
   "description": "Node api project",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "marko": "4.14.20"
   },
   "devDependencies": {},
   "scripts": {
